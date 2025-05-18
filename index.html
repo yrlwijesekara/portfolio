@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wijesekara | Software Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">YRL<span>Wijesekara</span></a>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#works" class="nav-link">Works</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+            <button class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-nav">
+        <a href="#home" class="mobile-link">Home</a>
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#works" class="mobile-link">Works</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+        <div class="mobile-theme-toggle">
+            <span>Dark Mode</span>
+            <label class="switch">
+                <input type="checkbox" class="theme-checkbox">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title animate">Hi, I'm <span>Wijesekara</span></h1>
+                <h2 class="hero-subtitle animate">BSC (Hons) Software Engineer</h2>
+                <p class="hero-text animate">I'm an undergraduate Software Engineer at NSBM, passionate about crafting
+                    intuitive and responsive user interfaces. As a Front-End Web Developer, I specialize in building
+                    modern, user-focused web applications using technologies like HTML, CSS, JavaScript, and frameworks
+                    such as React. I enjoy turning ideas into visually engaging and interactive digital experiences.</p>
+                <div class="hero-buttons animate">
+                    <a href="#works" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-image animate">
+                <div class="image-wrapper">
+                    <img src="./assets/IMG_20230223_170532[1].jpg" alt="Your Name" class="profile-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title animate">About <span>Me</span></h2>
+            <div class="about-content">
+                <div class="about-text animate">
+                    <p>I'm a passionate software engineer with expertise in modern web technologies. I specialize in
+                        creating responsive, user-friendly applications with clean, maintainable code.</p>
+                    <p>With 2 years of experience in the industry, I've worked on projects ranging from small business
+                        websites to large-scale enterprise applications.</p>
+                    <div class="skills">
+                        <h3>My Skills</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Flutter</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Firebase</span>
+                            <span class="skill-tag">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image animate">
+                    <img src="./assets/IMG_20230223_170532[1].jpg" alt="About Me">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Works Section -->
+    <section id="works" class="works">
+        <div class="container">
+            <h2 class="section-title animate">My <span>Works</span></h2>
+            <div class="works-filter animate">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Apps</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="other">Other</button>
+            </div>
+            <div class="works-grid">
+                <!-- Work Item 1 -->
+                <div class="work-item animate" data-category="web">
+                    <div class="work-video">
+                        <video controls poster="https://via.placeholder.com/600x400">
+                            <source src="project1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="work-info">
+                        <h3>E-commerce Platform</h3>
+                        <p>Full-stack e-commerce solution with React and Node.js</p>
+                        <div class="work-links">
+                            <a href="#" class="work-link">Live Demo</a>
+                            <a href="#" class="work-link">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Work Item 2 -->
+                <div class="work-item animate" data-category="mobile">
+                    <div class="work-video">
+                        <video controls poster="https://via.placeholder.com/600x400">
+                            <source src="project2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="work-info">
+                        <h3>Fitness Tracker App</h3>
+                        <p>React Native application for fitness tracking</p>
+                        <div class="work-links">
+                            <a href="#" class="work-link">App Store</a>
+                            <a href="#" class="work-link">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Work Item 3 -->
+                <div class="work-item animate" data-category="web">
+                    <div class="work-video">
+                        <video controls poster="https://via.placeholder.com/600x400">
+                            <source src="project3.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="work-info">
+                        <h3>Project Management Tool</h3>
+                        <p>Collaborative project management dashboard</p>
+                        <div class="work-links">
+                            <a href="#" class="work-link">Live Demo</a>
+                            <a href="#" class="work-link">Case Study</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Work Item 4 -->
+                <div class="work-item animate" data-category="other">
+                    <div class="work-video">
+                        <video controls poster="https://via.placeholder.com/600x400">
+                            <source src="project4.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="work-info">
+                        <h3>AI Chatbot</h3>
+                        <p>Natural language processing chatbot</p>
+                        <div class="work-links">
+                            <a href="#" class="work-link">Demo</a>
+                            <a href="#" class="work-link">Research Paper</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Work Item 5 (Sadd Video) -->
+                <div class="work-item animate" data-category="other">
+                    <div class="work-video">
+                        <iframe width="100%" height="315"
+                            src="https://www.youtube.com/embed/Chs7yRjRh9Q"
+                            title="Sadd Video"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="work-info">
+                        <h3>Sadd Video</h3>
+                        <p>Description of your Sadd video project.</p>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/watch?v=Chs7yRjRh9Q" class="work-link" target="_blank">Watch</a>
+                            <a href="#" class="work-link">More Info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title animate">Get In <span>Touch</span></h2>
+            <div class="contact-content">
+                <div class="contact-info animate">
+                    <h3>Contact Information</h3>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>yrlwijesekara@gmail.com</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+94 77 000 0000</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Homagama, Sri Lanka</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <!-- Replace YOUR_EMAIL with your real email address after registering at Formspree -->
+                <form class="contact-form animate" action="https://formspree.io/f/movdronq" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="year"></span> YRL Wijesekara. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
