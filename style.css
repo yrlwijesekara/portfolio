@@ -114,6 +114,27 @@ section {
     box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
 }
 
+.btn-download-cv {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 2rem;
+    background: linear-gradient(90deg, #4f8cff, #38e6c5);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(79, 140, 255, 0.15);
+    transition: background 0.3s, transform 0.2s;
+    cursor: pointer;
+}
+
+.btn-download-cv:hover {
+    background: linear-gradient(90deg, #38e6c5, #4f8cff);
+    transform: translateY(-2px) scale(1.03);
+}
+
 /* Navigation */
 .navbar {
     position: fixed;
@@ -417,6 +438,12 @@ input:checked + .slider:before {
 
 .about-text p {
     margin-bottom: 20px;
+}
+
+.cv-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem; /* Space between skill tags and button */
 }
 
 .about-image {
@@ -765,5 +792,16 @@ input:checked + .slider:before {
 
     .mobile-nav {
         width: 100%;
+    }
+
+    .btn-download-cv {
+        width: 100%;
+        padding: 1rem 0;
+        font-size: 1.1rem;
+        margin-top: 1rem;
+    }
+
+    .cv-btn-wrapper {
+        margin-top: 1.2rem;
     }
 }
