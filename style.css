@@ -116,7 +116,7 @@ section {
 
 .btn-download-cv {
     display: inline-block;
-    margin-top: 1.5rem;
+    margin-top: 0;
     padding: 0.75rem 2rem;
     background: linear-gradient(90deg, #4f8cff, #38e6c5);
     color: #fff;
@@ -443,7 +443,7 @@ input:checked + .slider:before {
 .cv-btn-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 3rem; /* Space between skill tags and button */
+    margin-top: 2rem; /* Space between skill tags and button */
 }
 
 .about-image {
@@ -726,6 +726,74 @@ input:checked + .slider:before {
     }
 }
 
+/* Stylish Dice Loader */
+#dice-loader {
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+    background: linear-gradient(135deg, #232526 0%, #3a86ff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.7s;
+}
+
+#dice-loader.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dice-3d {
+    width: 90px;
+    height: 90px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: dice-3d-rotate 2.2s cubic-bezier(.68,-0.55,.27,1.55) infinite;
+    filter: drop-shadow(0 0 30px #3a86ff88);
+}
+
+.face {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(145deg, #fff 70%, #e0e7ff 100%);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px #3a86ff22, 0 2px 8px #0002;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.face1  { transform: rotateY(0deg) translateZ(45px);}
+.face2  { transform: rotateY(180deg) translateZ(45px);}
+.face3  { transform: rotateY(90deg) translateZ(45px);}
+.face4  { transform: rotateY(-90deg) translateZ(45px);}
+.face5  { transform: rotateX(90deg) translateZ(45px);}
+.face6  { transform: rotateX(-90deg) translateZ(45px);}
+
+.dot {
+    width: 18px;
+    height: 18px;
+    background: radial-gradient(circle at 30% 30%, #3a86ff 70%, #2667cc 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 8px #3a86ff88, 0 2px 4px #0002;
+    margin: 4px;
+}
+
+.face1 .dot { margin: auto; }
+.face2 .dot { margin: 28px 8px; }
+.face3 .dot { margin: 8px; }
+.face4 .dot { margin: 8px; }
+.face5 .dot { margin: 8px; }
+.face6 .dot { margin: 8px; }
+
+@keyframes dice-3d-rotate {
+    0%   { transform: rotateX(0deg) rotateY(0deg);}
+    100% { transform: rotateX(360deg) rotateY(360deg);}
+}
+
 /* Responsive Styles */
 @media (max-width: 992px) {
     .hero .container {
@@ -803,5 +871,46 @@ input:checked + .slider:before {
 
     .cv-btn-wrapper {
         margin-top: 1.2rem;
+    }
+}
+
+/* Responsive Download CV Button */
+.cv-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.btn-download-cv {
+    display: inline-block;
+    margin-top: 0;
+    padding: 0.75rem 2rem;
+    background: linear-gradient(90deg, #4f8cff, #38e6c5);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(79, 140, 255, 0.15);
+    transition: background 0.3s, transform 0.2s;
+    cursor: pointer;
+}
+
+.btn-download-cv:hover {
+    background: linear-gradient(90deg, #38e6c5, #4f8cff);
+    transform: translateY(-2px) scale(1.03);
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .cv-btn-wrapper {
+        margin-top: 1.2rem;
+    }
+    .btn-download-cv {
+        width: 100%;
+        padding: 1rem 0;
+        font-size: 1.1rem;
+        text-align: center;
     }
 }

@@ -10,6 +10,27 @@
 </head>
 
 <body>
+    <!-- Dice Loader Overlay -->
+    <div id="dice-loader">
+        <div class="dice-3d">
+            <div class="face face1"><span class="dot"></span></div>
+            <div class="face face2"><span class="dot"></span><span class="dot"></span></div>
+            <div class="face face3"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="face face4">
+                <span class="dot"></span><span class="dot"></span>
+                <span class="dot"></span><span class="dot"></span>
+            </div>
+            <div class="face face5">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                <span class="dot"></span><span class="dot"></span>
+            </div>
+            <div class="face face6">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -64,7 +85,7 @@
             </div>
             <div class="hero-image animate">
                 <div class="image-wrapper">
-                    <img src="./assets/MyImage.html" alt="Your Name" class="profile-image">
+                    <img src="./assets/myimage.jpg" alt="Your Name" class="profile-image">
                 </div>
             </div>
         </div>
@@ -270,6 +291,14 @@
     </footer>
 
     <script src="./script.js"></script>
+    <script>
+        // Hide dice loader after 2.5 seconds
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('dice-loader').classList.add('hide');
+            }, 2500);
+        });
+    </script>
 </body>
 
 </html>
