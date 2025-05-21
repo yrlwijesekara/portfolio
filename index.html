@@ -119,7 +119,7 @@
                     </div>
                 </div>
                 <div class="about-image animate">
-                    <img src="./assets/IMG_20230223_170532[1].jpg" alt="About Me">
+                    <img src="./assets/image.jpeg" alt="About Me">
                 </div>
             </div>
         </div>
@@ -241,11 +241,11 @@
                     <h3>Contact Information</h3>
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
-                        <span>yrlwijesekara@gmail.com</span>
+                        <span>yehanjb@gmail.com</span>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
-                        <span>+94 77 000 0000</span>
+                        <span>+94 761 693 643</span>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
@@ -253,13 +253,13 @@
                     </div>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/yehan-raveesha-245a45357/" class="social-link"><i class="fab fa-linkedin"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <!-- Replace YOUR_EMAIL with your real email address after registering at Formspree -->
-                <form class="contact-form animate" action="https://formspree.io/f/movdronq" method="POST">
+                <form class="contact-form animate" id="contactForm" action="https://formspree.io/f/movdronq" method="POST">
                     <div class="form-group">
                         <input type="text" name="name" placeholder="Your Name" required>
                     </div>
@@ -278,6 +278,14 @@
         </div>
     </section>
 
+    <!-- Success Popup -->
+    <div id="form-success-popup" class="form-success-popup">
+        <div class="form-success-popup-content">
+            <span id="form-success-close" class="form-success-close">&times;</span>
+            <p>Thank you! Your message has been submitted.</p>
+        </div>
+    </div>
+
     <!-- Back to Top Button -->
     <button class="back-to-top">
         <i class="fas fa-arrow-up"></i>
@@ -291,14 +299,5 @@
     </footer>
 
     <script src="./script.js"></script>
-    <script>
-        // Hide dice loader after 2.5 seconds
-        window.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                document.getElementById('dice-loader').classList.add('hide');
-            }, 2500);
-        });
-    </script>
 </body>
-
 </html>

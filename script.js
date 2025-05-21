@@ -135,5 +135,49 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Hide dice loader after 2.5 seconds
+    setTimeout(function() {
+        const loader = document.getElementById('dice-loader');
+        if (loader) loader.classList.add('hide');
+    }, 2500);
+    
+    // Contact form AJAX submit (Formspree)
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const data = new FormData(form);
+
+            // Send the form data via fetch to Formspree
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                // Show popup
+                const popup = document.getElementById('form-success-popup');
+                popup.classList.add('active');
+                form.reset();
+
+                // Close popup on click or after 2 seconds
+                const closeBtn = document.getElementById('form-success-close');
+                function closePopup() {
+                    popup.classList.remove('active');
+                    window.location.reload();
+                }
+                closeBtn.onclick = closePopup;
+                popup.onclick = function(e) {
+                    if (e.target === popup) closePopup();
+                };
+                setTimeout(closePopup, 2000);
+            } else {
+                alert('There was a problem submitting your form. Please try again.');
+            }
+        });
+    }
 });
 
