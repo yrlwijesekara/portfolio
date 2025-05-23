@@ -6,10 +6,10 @@
     --accent-color: #ff006e;
     --text-color: #333;
     --text-light: #666;
-    --bg-color: #f8f9fa;
+    --bg-color: #d9e4b36e;
     --card-bg: #fff;
     --nav-bg: rgba(255, 255, 255, 0.95);
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     --transition: all 0.3s ease;
 }
 
@@ -78,46 +78,9 @@ section {
     border-radius: 2px;
 }
 
-.btn {
-    display: inline-block;
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: var(--transition);
-    border: none;
-    cursor: pointer;
-}
-
+/* Consistent Button Styles Across the Page */
+.btn,
 .btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
-    margin-left: 15px;
-}
-
-.btn-secondary:hover {
-    background-color: var(--primary-color);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
-}
-
-.btn-download-cv {
-    display: inline-block;
-    margin-top: 0;
-    padding: 0.75rem 2rem;
     background: linear-gradient(90deg, #4f8cff, #38e6c5);
     color: #fff;
     border: none;
@@ -126,12 +89,36 @@ section {
     font-weight: 600;
     text-decoration: none;
     box-shadow: 0 2px 8px rgba(79, 140, 255, 0.15);
-    transition: background 0.3s, transform 0.2s;
+    transition: background 0.3s, transform 0.2s, color 0.2s;
     cursor: pointer;
+    padding: 0.75rem 2rem;
+    display: inline-block;
 }
 
-.btn-download-cv:hover {
+.btn:hover,
+.btn-primary:hover {
     background: linear-gradient(90deg, #38e6c5, #4f8cff);
+    transform: translateY(-2px) scale(1.03);
+    color: #fff;
+}
+
+/* Secondary Button with Gradient Border */
+.btn-secondary {
+    background: transparent;
+    color: #4f8cff;
+    
+    border-image: linear-gradient(90deg, #4f8cff, #38e6c5) 1;
+    border-radius: 30px;
+    margin-left: 15px;
+    font-weight: 600;
+    transition: background 0.3s, color 0.2s, border-color 0.3s, transform 0.2s;
+    padding: 0.75rem 2rem;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(90deg, #38e6c5, #4f8cff);
+    color: #fff;
+    border-color: transparent;
     transform: translateY(-2px) scale(1.03);
 }
 
@@ -454,12 +441,14 @@ input:checked + .slider:before {
 
 .about-image img {
     max-width: 100%;
+    max-height: 500px; /* Set your preferred max height */
     border-radius: 10px;
     box-shadow: var(--shadow);
     border: 4px solid #4f8cff;      /* Adjust color to match your hero section */
     border-radius: 20px;            /* Rounded corners, adjust as needed */
     transition: border-color 0.3s, box-shadow 0.3s;
     box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    object-fit: cover;
 }
 
 
@@ -472,19 +461,59 @@ input:checked + .slider:before {
     font-size: 1.5rem;
 }
 
+/* Eye-catching Skill Tags */
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 14px;
+    margin-top: 10px;
 }
 
 .skill-tag {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
+    background: linear-gradient(90deg, #4f8cff 60%, #38e6c5 100%);
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 2px 12px rgba(58,134,255,0.12), 0 1.5px 6px #38e6c522;
+    letter-spacing: 0.5px;
+    border: none;
+    transition: transform 0.18s, box-shadow 0.18s, background 0.3s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.skill-tag::before {
+    content: '';
+    position: absolute;
+    left: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    background: radial-gradient(circle at 60% 40%, #fff8, transparent 70%);
+    border-radius: 50%;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.skill-tag:hover {
+    transform: scale(1.08) translateY(-2px) rotate(-2deg);
+    box-shadow: 0 6px 24px #4f8cff33, 0 2px 8px #38e6c544;
+    background: linear-gradient(90deg, #38e6c5 0%, #4f8cff 100%);
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .skill-tag {
+        font-size: 0.95rem;
+        padding: 9px 14px;
+    }
+    .skill-tags {
+        gap: 10px;
+    }
 }
 
 /* Works Section */
