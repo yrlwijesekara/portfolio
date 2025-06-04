@@ -304,5 +304,130 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === 'ArrowLeft') prevCert();
         if (e.key === 'ArrowRight') nextCert();
     });
+    
+    // Project Lightbox Functionality
+    const projectLinks = document.querySelectorAll('.project-preview');
+    const projectLightbox = document.getElementById('project-lightbox');
+    const projectClose = document.querySelector('.project-lightbox-close');
+    const projectPrev = document.querySelector('.project-prev');
+    const projectNext = document.querySelector('.project-next');
+    
+    if (!projectLightbox || projectLinks.length === 0) return;
+    
+    let currentProjectIndex = 0;
+    const projectSlides = document.querySelectorAll('.project-slide');
+    
+    // Open project lightbox
+    function openProjectLightbox(projectId) {
+        // Hide all slides first
+        projectSlides.forEach(slide => {
+            slide.style.display = 'none';
+        });
+        
+        // Show the selected project slide
+        const selectedSlide = document.querySelector(`.project-slide[data-project="${projectId}"]`);
+        if (selectedSlide) {
+            selectedSlide.style.display = 'flex';
+            currentProjectIndex = Array.from(projectSlides).indexOf(selectedSlide);
+        }
+        
+        // Show the lightbox
+        projectLightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+    
+    // Close project lightbox
+    function closeProjectLightbox() {
+        projectLightbox.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+    
+    // Navigate to previous project
+    function prevProject() {
+        if (projectSlides.length <= 1) return;
+        
+        // Hide current project
+        projectSlides[currentProjectIndex].style.display = 'none';
+        
+        // Calculate new index
+        currentProjectIndex = (currentProjectIndex - 1 + projectSlides.length) % projectSlides.length;
+        
+        // Show new project
+        projectSlides[currentProjectIndex].style.display = 'flex';
+    }
+    
+    // Navigate to next project
+    function nextProject() {
+        if (projectSlides.length <= 1) return;
+        
+        // Hide current project
+        projectSlides[currentProjectIndex].style.display = 'none';
+        
+        // Calculate new index
+        currentProjectIndex = (currentProjectIndex + 1) % projectSlides.length;
+        
+        // Show new project
+        projectSlides[currentProjectIndex].style.display = 'flex';
+    }
+    
+    // Set up event listeners for project links
+    projectLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const projectId = this.getAttribute('data-project');
+            openProjectLightbox(projectId);
+        });
+    });
+    
+    // Close button event
+    if (projectClose) {
+        projectClose.addEventListener('click', closeProjectLightbox);
+    }
+    
+    // Previous button
+    if (projectPrev) {
+        projectPrev.addEventListener('click', prevProject);
+    }
+    
+    // Next button
+    if (projectNext) {
+        projectNext.addEventListener('click', nextProject);
+    }
+    
+    // Close when clicking outside
+    if (projectLightbox) {
+        projectLightbox.addEventListener('click', function(e) {
+            if (e.target === projectLightbox) {
+                closeProjectLightbox();
+            }
+        });
+    }
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (!projectLightbox.classList.contains('active')) return;
+        
+        if (e.key === 'Escape') closeProjectLightbox();
+        if (e.key === 'ArrowLeft') prevProject();
+        if (e.key === 'ArrowRight') nextProject();
+    });
+    
+    // Job Portal Video Thumbnail
+    const jobPortalThumbnail = document.getElementById('job-portal-thumbnail');
+    
+    if (jobPortalThumbnail) {
+        jobPortalThumbnail.addEventListener('click', function() {
+            // Create video element
+            const video = document.createElement('video');
+            video.src = './assets/video/fortnite.mp4'; // Your video file path
+            video.controls = true;
+            video.autoplay = true;
+            video.className = 'full-size-image';
+            
+            // Replace thumbnail with video
+            this.innerHTML = '';
+            this.appendChild(video);
+        });
+    }
 });
 

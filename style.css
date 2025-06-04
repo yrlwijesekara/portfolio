@@ -560,15 +560,23 @@ input:checked + .slider:before {
 }
 
 .work-video {
+    position: relative;
     width: 100%;
-    height: 250px;
     overflow: hidden;
+    border-radius: 12px 12px 0 0;
+    background-color: #000;
 }
 
 .work-video video {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 16/9;
     object-fit: cover;
+    display: block;
+    max-height: 300px;
+}
+
+.work-video video:hover {
+    opacity: 0.9;
 }
 
 .work-info {
@@ -610,6 +618,52 @@ input:checked + .slider:before {
 
 .work-link:hover::after {
     width: 100%;
+}
+
+/* Video Thumbnail with Play Button */
+.video-thumbnail {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #4f8cff, #38e6c5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.play-button i {
+    color: white;
+    font-size: 22px;
+    margin-left: 4px; /* Center the play icon properly */
+}
+
+.video-thumbnail:hover img {
+    transform: scale(1.05);
+    filter: brightness(0.8);
+}
+
+.video-thumbnail:hover .play-button {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 6px 24px rgba(56, 230, 197, 0.4);
 }
 
 /* Contact Section */
@@ -1047,34 +1101,212 @@ input:checked + .slider:before {
     to { transform: scale(1); opacity: 1; }
 }
 
-/* Responsive Adjustments */
-@media (max-width: 992px) {
-    .cert-gallery {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
+/* Project Lightbox Styles */
+.project-lightbox {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.85);
+    overflow: auto;
+    animation: lightbox-fade-in 0.3s ease;
 }
 
+.project-lightbox.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-lightbox-content {
+    position: relative;
+    background-color: var(--card-bg);
+    margin: auto;
+    max-width: 90%;
+    width: 1000px;
+    max-height: 90vh;
+    border-radius: 12px;
+    animation: popup-bounce-in 0.6s;
+}
+
+.project-lightbox-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.3);
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.project-lightbox-close:hover {
+    transform: rotate(90deg);
+    background: rgba(255,255,255,0.2);
+}
+
+.project-lightbox-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.project-slides {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.project-slide {
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.project-images {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 10px;
+    padding: 20px;
+    background-color: #111;
+    max-height: 50vh;
+}
+
+.project-images img {
+    width: auto;
+    height: auto;
+    max-height: calc(50vh - 40px);
+    object-fit: contain;
+    scroll-snap-align: center;
+    border-radius: 8px;
+    flex: 0 0 auto;
+}
+
+.project-details {
+    padding: 25px;
+    background-color: var(--card-bg);
+    flex-grow: 1;
+}
+
+.project-details h2 {
+    margin-top: 0;
+    color: var(--text-color);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.project-description {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: var(--text-light);
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.tech-tag {
+    background: linear-gradient(90deg, #4f8cff 60%, #38e6c5 100%);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.project-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.project-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 1.2rem;
+    z-index: 5;
+}
+
+.project-prev {
+    left: 20px;
+}
+
+.project-next {
+    right: 20px;
+}
+
+.project-nav:hover {
+    background: rgba(58, 134, 255, 0.7);
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    .cert-gallery {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    .project-lightbox-content {
+        width: 95%;
     }
     
-    .lightbox-content {
-        width: 95%;
+    .project-slide {
+        flex-direction: column;
+    }
+    
+    .project-images {
+        max-height: 40vh;
+    }
+    
+    .project-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .project-prev {
+        left: 10px;
+    }
+    
+    .project-next {
+        right: 10px;
     }
 }
 
 @media (max-width: 576px) {
-    .cert-gallery {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    .project-images {
+        max-height: 35vh;
     }
     
-    .cert-item {
-        height: 180px;
+    .project-details h2 {
+        font-size: 1.5rem;
     }
     
-    .cert-overlay h4 {
-        font-size: 1rem;
+    .project-description {
+        font-size: 0.95rem;
     }
 }
 
@@ -1327,4 +1559,23 @@ input:checked + .slider:before {
         font-size: 1.1rem;
         text-align: center;
     }
+}
+
+/* Add this to style.css */
+.full-size-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+/* Adjust the container if needed */
+.work-image {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #f0f2f5;
+    padding: 0;
+    margin: 0;
 }

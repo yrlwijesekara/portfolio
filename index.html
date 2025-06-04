@@ -141,7 +141,7 @@
                 <!-- Work Item 1 -->
                 <div class="work-item animate" data-category="web">
                     <div class="work-video">
-                        <video controls poster="https://via.placeholder.com/600x400">
+                        <video controls width="100%" height="auto" poster="https://via.placeholder.com/600x400">
                             <source src="project1.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -195,7 +195,7 @@
                 <!-- Work Item 4 -->
                 <div class="work-item animate" data-category="other">
                     <div class="work-video">
-                        <video controls poster="https://via.placeholder.com/600x400">
+                        <video controls width="100%" height="auto" poster="https://via.placeholder.com/600x400">
                             <source src="project4.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -210,20 +210,22 @@
                     </div>
                 </div>
 
-                <!-- Work Item 5 - Node Job Portal -->
-                <div class="work-item animate" data-category="web">
-                    <div class="work-video">
-                        <video controls poster="https://via.placeholder.com/600x400">
-                            <source src="project5.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
+              <!-- Work Item 5 - Node Job Portal -->
+<div class="work-item animate" data-category="web">
+    <div class="work-video">
+        <div class="video-thumbnail" id="job-portal-thumbnail">
+            <img src="./assets/jobportal/jobs page.png" alt="Job Portal Platform" class="full-size-image">
+            <div class="play-button">
+                <i class="fas fa-play"></i>
+            </div>
+        </div>
+    </div>
                     <div class="work-info">
                         <h3>Job Portal Platform</h3>
                         <p>Full-stack job portal built with Node.js, allowing employers to post jobs and candidates to apply</p>
                         <div class="work-links">
-                            <a href="#" class="work-link">Live Demo</a>
-                            <a href="https://github.com/yrlwijesekara/node_jobportal" class="work-link">Code</a>
+                            <a href="#" class="work-link project-preview" data-project="job-portal">Project Preview</a>
+                            
                         </div>
                     </div>
                 </div>
@@ -375,6 +377,44 @@
             </div>
         </div>
     </div>
+
+    <!-- Project Lightbox -->
+<div id="project-lightbox" class="project-lightbox">
+    <div class="project-lightbox-content">
+        <span class="project-lightbox-close">&times;</span>
+        <div class="project-lightbox-container">
+            <div class="project-slides">
+                <!-- Job Portal Project Slides -->
+                <div class="project-slide" data-project="job-portal">
+                    <div class="project-images">
+                        <img src="./assets/jobportal/Home Page.png" alt="Job Portal Dashboard">
+                      
+                    </div>
+                    <div class="project-details">
+                        <h2>Node.js Job Portal</h2>
+                        <p class="project-description">
+                            A full-stack job portal application built with Node.js, Express, and MongoDB. 
+                            This platform connects employers and job seekers with features like job posting, 
+                            application tracking, user profiles, and search functionality.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Next.js</span>
+                        </div>
+                        <div class="project-buttons">
+                            <a href="https://github.com/yrlwijesekara/node_jobportal" class="btn btn-primary" target="_blank">
+                                <i class="fab fa-github"></i> View Repository
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
