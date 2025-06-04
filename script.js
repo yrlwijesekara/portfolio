@@ -73,28 +73,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Works Filter
-    const filterBtns = document.querySelectorAll('.filter-btn');
+    const worksFilter = document.querySelector('.works-filter');
     const workItems = document.querySelectorAll('.work-item');
     
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Remove active class from all buttons
-            filterBtns.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            const filter = this.getAttribute('data-filter');
-            
-            workItems.forEach(item => {
-                if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
+    if (worksFilter) {
+        const workFilterBtns = worksFilter.querySelectorAll('.filter-btn');
+        
+        workFilterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all work filter buttons only
+                workFilterBtns.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                
+                workItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
             });
         });
-    });
+    }
     
     // Scroll Animations
     const animateElements = document.querySelectorAll('.animate');
@@ -179,5 +183,126 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+    // Certification Lightbox Functionality
+    // Certification filtering
+    const certFilter = document.querySelector('.cert-filter');
+    if (certFilter) {
+        certFilter.addEventListener('click', function(e) {
+            if (e.target.classList.contains('filter-btn')) {
+                // Remove active class from all buttons
+                document.querySelectorAll('.cert-filter .filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                e.target.classList.add('active');
+                
+                // Get filter value
+                const filterValue = e.target.getAttribute('data-filter');
+                
+                // Filter items
+                document.querySelectorAll('.cert-item').forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+        });
+    }
+
+    // Lightbox functionality
+    const certItems = document.querySelectorAll('.cert-item');
+    const lightbox = document.getElementById('cert-lightbox');
+    const lightboxImg = document.getElementById('lightbox-image');
+    const lightboxClose = document.querySelector('.lightbox-close');
+    const lightboxPrev = document.querySelector('.lightbox-prev');
+    const lightboxNext = document.querySelector('.lightbox-next');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDesc = document.getElementById('lightbox-desc');
+    const lightboxLink = document.getElementById('lightbox-link');
+    
+    let currentIndex = 0;
+    const visibleCertificates = [];
+    
+    if (!certItems.length || !lightbox) return;
+    
+    // Update visible certificates array
+    function updateVisibleCerts() {
+        visibleCertificates.length = 0;
+        document.querySelectorAll('.cert-item:not([style*="display: none"])').forEach(item => {
+            visibleCertificates.push(item);
+        });
+    }
+    
+    // Open lightbox with specific certificate
+    function openLightbox(certItem, index) {
+        updateVisibleCerts();
+        currentIndex = index;
+        
+        // Get data from certificate
+        const imgSrc = certItem.querySelector('img').src;
+        const title = certItem.querySelector('h4').textContent;
+        const desc = certItem.querySelector('p').textContent;
+        
+        // Set lightbox content
+        lightboxImg.src = imgSrc;
+        lightboxTitle.textContent = title;
+        lightboxDesc.textContent = desc;
+        lightboxLink.href = imgSrc; // Link to full-size image
+        
+        // Show lightbox
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+    
+    // Close lightbox
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+    
+    // Navigate to previous certificate
+    function prevCert() {
+        currentIndex = (currentIndex - 1 + visibleCertificates.length) % visibleCertificates.length;
+        openLightbox(visibleCertificates[currentIndex], currentIndex);
+    }
+    
+    // Navigate to next certificate
+    function nextCert() {
+        currentIndex = (currentIndex + 1) % visibleCertificates.length;
+        openLightbox(visibleCertificates[currentIndex], currentIndex);
+    }
+    
+    // Set up event listeners
+    certItems.forEach((item, index) => {
+        item.addEventListener('click', function() {
+            updateVisibleCerts();
+            const visibleIndex = visibleCertificates.indexOf(this);
+            openLightbox(this, visibleIndex);
+        });
+    });
+    
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', prevCert);
+    lightboxNext.addEventListener('click', nextCert);
+    
+    // Close when clicking outside the content
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+    
+    // Handle keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('active')) return;
+        
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') prevCert();
+        if (e.key === 'ArrowRight') nextCert();
+    });
 });
 

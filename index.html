@@ -38,6 +38,7 @@
             <div class="nav-links">
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#about" class="nav-link">About</a>
+                <a href="#certifications" class="nav-link">Certifications</a>
                 <a href="#works" class="nav-link">Works</a>
                 <a href="#contact" class="nav-link">Contact</a>
                 <button class="theme-toggle">
@@ -57,6 +58,7 @@
     <nav class="mobile-nav">
         <a href="#home" class="mobile-link">Home</a>
         <a href="#about" class="mobile-link">About</a>
+        <a href="#certifications" class="mobile-link">Certifications</a>
         <a href="#works" class="mobile-link">Works</a>
         <a href="#contact" class="mobile-link">Contact</a>
         <div class="mobile-theme-toggle">
@@ -230,6 +232,123 @@
             </div>
         </div>
     </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title animate">My <span>Certifications</span></h2>
+            <div class="cert-filter animate">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="languages">Languages</button>
+                <button class="filter-btn" data-filter="Society">Society</button>
+            </div>
+            <div class="cert-gallery">
+                <!-- Certification Item 1 -->
+                <div class="cert-item animate" data-category="web">
+                    <div class="cert-thumbnail">
+                        <img src="./assets/certificates/image.png" alt="Web Development Certificate">
+                        <div class="cert-overlay">
+                            <h4>Web Development</h4>
+                            <p>Full Stack JavaScript</p>
+                            <span class="view-cert">View Certificate</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certification Item 2 -->
+                <div class="cert-item animate" data-category="languages">
+                    <div class="cert-thumbnail">
+                        <img src="./assets/certificates/Python_for_Beginners_E-Certificate.pdf" alt="Python Certificate">
+                        <div class="cert-overlay">
+                            <h4>Python Programming</h4>
+                            <p>Python Institute</p>
+                            <span class="view-cert">View Certificate</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certification Item 3 -->
+                <div class="cert-item animate" data-category="Society">
+                    <div class="cert-thumbnail">
+                        <img src="./assets/certificates/Figma.jpg" alt="Figma Certificate">
+                        <div class="cert-overlay">
+                            <h4>Figmate-UI/UX Workshop</h4>
+                            <p>Amazon Web Services</p>
+                            <span class="view-cert">View Certificate</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certification Item 4 -->
+                <div class="cert-item animate" data-category="languages">
+                    <div class="cert-thumbnail">
+                        <img src="./assets/certificates/node_bootcamp.html" alt="React Certificate">
+                        <div class="cert-overlay">
+                            <h4>Introduction to HTML</h4>
+                            <p>Modern React with Redux</p>
+                            <span class="view-cert">View Certificate</span>
+                        </div>
+                    </div>
+                </div>
+
+                  <!-- Certification Item 5 -->
+                <div class="cert-item animate" data-category="Society">
+                    <div class="cert-thumbnail">
+                        <img src="./assets/certificates/github_skillshare.jpg" alt="github_skillshare Certificate">
+                        <div class="cert-overlay">
+                            <h4>Elevate you github skills</h4>
+                            <p>Modern React with Redux</p>
+                            <span class="view-cert">View Certificate</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Certification Item 6-->
+                <div class="cert-item animate" data-category="Society">
+                    <div class="cert-thumbnail">
+                        <img src="./assets/certificates/portfolio_skillshare.jpg" alt="Portfolio Certificate">
+                        <div class="cert-overlay">
+                            <h4>Build your Professional Portfolio</h4>
+                            <p>Amazon Web Services</p>
+                            <span class="view-cert">View Certificate</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Certification Item 7-->
+                <div class="cert-item animate" data-category="languages">
+                    <div class="cert-thumbnail">
+                        <img src="./assets/certificates/introduction to HTML.jpg" alt="Html Certificate">
+                        <div class="cert-overlay">
+                            <h4>Introduction to HTML</h4>
+                            <p>Python Institute</p>
+                            <span class="view-cert">View Certificate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certification Lightbox -->
+    <div id="cert-lightbox" class="cert-lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <div class="lightbox-image-container">
+                <img id="lightbox-image" src="" alt="Certificate">
+                <div class="lightbox-navigation">
+                    <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="lightbox-info">
+                <h3 id="lightbox-title">Certificate Title</h3>
+                <p id="lightbox-desc">Certificate description</p>
+                 <a id="lightbox-link" href="#" class="btn btn-primary" target="_blank">Download Certificate</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
