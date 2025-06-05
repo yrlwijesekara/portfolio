@@ -1110,8 +1110,8 @@ input:checked + .slider:before {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.85);
-    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+    overflow: hidden;
     animation: lightbox-fade-in 0.3s ease;
 }
 
@@ -1125,188 +1125,223 @@ input:checked + .slider:before {
     position: relative;
     background-color: var(--card-bg);
     margin: auto;
-    max-width: 90%;
-    width: 1000px;
+    width: 95%;
+    max-width: 1000px;
     max-height: 90vh;
     border-radius: 12px;
-    animation: popup-bounce-in 0.6s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-lightbox-close {
     position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
     color: #fff;
     cursor: pointer;
     z-index: 10;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.5);
     border-radius: 50%;
     transition: all 0.2s;
 }
 
-.project-lightbox-close:hover {
-    transform: rotate(90deg);
-    background: rgba(255,255,255,0.2);
-}
-
 .project-lightbox-container {
-    position: relative;
     width: 100%;
+    height: 100%;
     overflow: hidden;
-    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-slides {
-    display: flex;
     width: 100%;
     height: 100%;
+    flex: 1;
 }
 
 .project-slide {
-    flex: 0 0 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    height: 100%;
 }
 
+/* Image gallery section */
 .project-images {
+    background-color: #111;
+    padding: 15px;
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 10px;
-    padding: 20px;
-    background-color: #111;
-    max-height: 50vh;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.3) transparent;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    max-height: 45vh;
 }
 
+/* Style the scrollbar for better visibility */
+.project-images::-webkit-scrollbar {
+    height: 6px;
+}
+
+.project-images::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 10px;
+}
+
+.project-images::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Image styling */
 .project-images img {
-    width: auto;
     height: auto;
-    max-height: calc(50vh - 40px);
+    max-height: calc(45vh - 30px);
+    width: auto;
+    max-width: min(90vw, 600px);
     object-fit: contain;
     scroll-snap-align: center;
-    border-radius: 8px;
+    border-radius: 6px;
     flex: 0 0 auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
+/* Project details section */
 .project-details {
-    padding: 25px;
-    background-color: var(--card-bg);
-    flex-grow: 1;
+    padding: 20px 15px;
+    overflow-y: auto;
+    max-height: 45vh;
 }
 
 .project-details h2 {
     margin-top: 0;
-    color: var(--text-color);
-    font-size: 1.8rem;
-    margin-bottom: 15px;
+    font-size: 1.6rem;
+    margin-bottom: 12px;
 }
 
 .project-description {
-    margin-bottom: 20px;
-    line-height: 1.6;
-    color: var(--text-light);
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-size: 0.95rem;
 }
 
 .project-tech {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 25px;
+    gap: 8px;
+    margin-bottom: 20px;
 }
 
 .tech-tag {
-    background: linear-gradient(90deg, #4f8cff 60%, #38e6c5 100%);
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 30px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 4px 10px;
 }
 
 .project-buttons {
     display: flex;
-    gap: 15px;
+    gap: 12px;
     flex-wrap: wrap;
 }
+/* Enhanced Tech Tags Design */
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 25px;
+}
 
+.tech-tag {
+    background: linear-gradient(135deg, rgba(79, 140, 255, 0.9), rgba(56, 230, 197, 0.9));
+    color: white;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(79, 140, 255, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.3s ease;
+}
+
+.tech-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, rgba(56, 230, 197, 0.9), rgba(79, 140, 255, 0.9));
+}
+/* Navigation buttons */
 .project-nav {
     position: absolute;
-    top: 50%;
+    top: 22%;
     transform: translateY(-50%);
     background: rgba(0,0,0,0.5);
     color: white;
     border: none;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     cursor: pointer;
-    transition: background 0.2s;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     z-index: 5;
+    opacity: 0.7;
+    transition: opacity 0.2s, background 0.2s;
 }
 
 .project-prev {
-    left: 20px;
+    left: 10px;
 }
 
 .project-next {
-    right: 20px;
+    right: 10px;
 }
 
 .project-nav:hover {
+    opacity: 1;
     background: rgba(58, 134, 255, 0.7);
 }
 
-/* Responsive adjustments */
+/* Mobile-specific improvements */
 @media (max-width: 768px) {
     .project-lightbox-content {
         width: 95%;
+        max-height: 95vh;
     }
     
-    .project-slide {
-        flex-direction: column;
+    .project-lightbox-close {
+        top: 8px;
+        right: 8px;
+        width: 32px;
+        height: 32px;
     }
     
     .project-images {
+        padding: 12px;
         max-height: 40vh;
     }
     
-    .project-nav {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
-    
-    .project-prev {
-        left: 10px;
-    }
-    
-    .project-next {
-        right: 10px;
-    }
-}
-
-@media (max-width: 576px) {
-    .project-images {
-        max-height: 35vh;
-    }
-    
-    .project-details h2 {
-        font-size: 1.5rem;
-    }
-    
-    .project-description {
-        font-size: 0.95rem;
+    .project-images img {
+        max-height: calc(40vh - 24px);
+        max-width: 85vw;
     }
 }
 
