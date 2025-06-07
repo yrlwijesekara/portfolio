@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wijesekara | Software Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./style.css">
 </head>
 
@@ -46,10 +47,9 @@
                     <i class="fas fa-sun"></i>
                 </button>
             </div>
+            <!-- Replace the existing hamburger button -->
             <button class="hamburger">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+                <i class="bi bi-list"></i>
             </button>
         </div>
     </nav>
@@ -105,19 +105,98 @@
                         websites to large-scale enterprise applications.</p>
                     <div class="skills">
                         <h3>My Skills</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">HTML/CSS</span>
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">Flutter</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">Git</span>
-                            <span class="skill-tag">Firebase</span>
-                            <span class="skill-tag">MongoDB</span>
+                        <div class="skill-progress-container">
+                            <!-- HTML/CSS Skill -->
+                            <div class="skill-progress">
+                                <div class="skill-info">
+                                    <span class="skill-name">HTML/CSS</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" data-percentage="90"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- React Skill -->
+                            <div class="skill-progress">
+                                <div class="skill-info">
+                                    <span class="skill-name">React</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" data-percentage="85"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- JavaScript Skill -->
+                            <div class="skill-progress">
+                                <div class="skill-info">
+                                    <span class="skill-name">JavaScript</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" data-percentage="80"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Node.js Skill -->
+                            <div class="skill-progress">
+                                <div class="skill-info">
+                                    <span class="skill-name">Node.js</span>
+                                    <span class="skill-percentage">75%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" data-percentage="75"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Flutter Skill -->
+                            <div class="skill-progress">
+                                <div class="skill-info">
+                                    <span class="skill-name">Flutter</span>
+                                    <span class="skill-percentage">70%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" data-percentage="70"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Firebase Skill -->
+                            <div class="skill-progress">
+                                <div class="skill-info">
+                                    <span class="skill-name">Firebase</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" data-percentage="80"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- MongoDB Skill -->
+                            <div class="skill-progress">
+                                <div class="skill-info">
+                                    <span class="skill-name">MongoDB</span>
+                                    <span class="skill-percentage">75%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" data-percentage="75"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Git Skill -->
+                            <div class="skill-progress">
+                                <div class="skill-info">
+                                    <span class="skill-name">Git</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" data-percentage="85"></div>
+                                </div>
+                            </div>
                         </div>
+                        
                         <div class="cv-btn-wrapper">
-                            <a href="./assets/CURRICULUM VITAE - yehan wijesekara.pdf" class="btn btn-download-cv"
-                                download>Download CV</a>
+                            <a href="./assets/CURRICULUM VITAE - yehan wijesekara.pdf" class="btn btn-download-cv" download>Download CV</a>
                         </div>
                     </div>
                 </div>
@@ -257,11 +336,10 @@
                 <!-- Certification Item 1 -->
                 <div class="cert-item animate" data-category="web">
                     <div class="cert-thumbnail">
-                        <img src="./assets/certificates/image.png" alt="Web Development Certificate">
+                        <img src="./assets/certificates/webdevelopment_sololearn.png" alt="Web Development Certificate">
                         <div class="cert-overlay">
                             <h4>Web Development</h4>
-                            <p>"Completed Web Development course on SoloLearn, gaining theoretical and practical skills
-                                in building modern websites."</p>
+                            <p>This certificate is issued by the Centre for Open & Distance Learning (CODL) at the University of Moratuwa, Sri Lanka.</p>
                             <span class="view-cert">View Certificate</span>
                         </div>
                     </div>
@@ -366,6 +444,19 @@
                             <h4>Emotional_inteligence</h4>
                             <p>Completed a 3-day Emotional Intelligence Bootcamp by LetsUpgrade in collaboration with
                                 NSDC, ITM Edutech, and GDG MAD.</p>
+                            <span class="view-cert">View Certificate</span>
+                        </div>
+                    </div>
+                </div>
+
+                    <!-- Certification Item 9-->
+                <div class="cert-item animate" data-category="web">
+                    <div class="cert-thumbnail">
+                        <img src="./assets/certificates/Web_Design_for_Beginners.jpg" alt="Web Development Certificate">
+                        <div class="cert-overlay">
+                            <h4>Web Development</h4>
+                            <p>"Completed Web Development course on SoloLearn, gaining theoretical and practical skills
+                                in building modern websites."</p>
                             <span class="view-cert">View Certificate</span>
                         </div>
                     </div>

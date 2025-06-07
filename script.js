@@ -7,11 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
         this.classList.toggle('active');
         mobileNav.classList.toggle('active');
         
-        // Toggle hamburger to X
+        // Toggle between menu and X icons
         if (this.classList.contains('active')) {
-            this.innerHTML = '<div class="bar"></div><div class="bar"></div><div class="bar"></div>';
+            this.innerHTML = '<i class="bi bi-x-lg"></i>'; // Bootstrap X icon
         } else {
-            this.innerHTML = '<div class="bar"></div>';
+            this.innerHTML = '<i class="bi bi-list"></i>'; // Bootstrap menu icon
         }
     });
     
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function() {
             hamburger.classList.remove('active');
             mobileNav.classList.remove('active');
-            hamburger.innerHTML = '<div class="bar"></div>';
+            hamburger.innerHTML = '<i class="bi bi-list"></i>'; // Reset to menu icon
         });
     });
     
@@ -429,5 +429,53 @@ document.addEventListener('DOMContentLoaded', function() {
             this.appendChild(video);
         });
     }
+    
+    // Skill Progress Bar Animation
+    // Replace both animateSkills and animateProgressBars with this single function
+    function animateSkillBars() {
+        // Reset all progress bars to zero width first
+        const progressBars = document.querySelectorAll('.progress-bar');
+        progressBars.forEach(bar => {
+            bar.style.width = '0%';
+        });
+        
+        // Create intersection observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // When progress bar is visible
+                if (entry.isIntersecting) {
+                    // Get the target percentage from data attribute
+                    const percentage = entry.target.getAttribute('data-percentage');
+                    
+                    // Stagger the animation slightly for each bar
+                    const index = Array.from(progressBars).indexOf(entry.target);
+                    const delay = 300 + (index * 100);
+                    
+                    // Set timeout for staggered animation
+                    setTimeout(() => {
+                        entry.target.style.width = percentage + '%';
+                    }, delay);
+                    
+                    // Stop observing after animation
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        
+        // Start observing all progress bars
+        progressBars.forEach(bar => {
+            observer.observe(bar);
+        });
+    }
+    
+    // Initialize progress bar animation
+    animateSkillBars();
+    
+    // Reinitialize animation when navigating back to the page
+    window.addEventListener('pageshow', function(event) {
+        if (event.persisted) {
+            animateSkillBars();
+        }
+    });
 });
 
