@@ -430,6 +430,47 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Video thumbnail playback functionality
+    // Get all play buttons in video thumbnails
+    const playButtons = document.querySelectorAll('.video-thumbnail .play-button');
+    
+    // Add click event to each play button
+    playButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get the parent thumbnail element
+            const thumbnail = this.closest('.video-thumbnail');
+            
+            // Find the video element within this thumbnail
+            const video = thumbnail.querySelector('video');
+            
+            if (video) {
+                // Hide the thumbnail image and play button
+                thumbnail.querySelector('img').style.display = 'none';
+                this.style.display = 'none';
+                
+                // Show and play the video
+                video.style.display = 'block';
+                video.play()
+                    .catch(error => {
+                        console.error("Video playback error:", error);
+                        // If video fails to play, show the thumbnail again
+                        thumbnail.querySelector('img').style.display = 'block';
+                        this.style.display = 'flex';
+                        video.style.display = 'none';
+                    });
+                
+                // When video ends, show thumbnail again
+                video.addEventListener('ended', function() {
+                    thumbnail.querySelector('img').style.display = 'block';
+                    thumbnail.querySelector('.play-button').style.display = 'flex';
+                    video.style.display = 'none';
+                });
+            }
+        });
+    });
+    
     // Skill Progress Bar Animation
     // Replace both animateSkills and animateProgressBars with this single function
     function animateSkillBars() {
@@ -477,5 +518,20 @@ document.addEventListener('DOMContentLoaded', function() {
             animateSkillBars();
         }
     });
+    
+    // Letter-by-letter animation for hero title
+    const letters = document.querySelectorAll('.hero-title .letter');
+    const nameContainer = document.querySelector('.hero-title .name-container');
+    
+    // Animate each letter with a delay
+    letters.forEach((letter, index) => {
+        letter.style.animation = `fadeInLetter 0.5s ease-out ${0.3 + index * 0.1}s forwards`;
+    });
+    
+    // After all letters are displayed, animate the entire name
+    const animationEndTime = 0.3 + letters.length * 0.1 + 0.5;
+    setTimeout(() => {
+        nameContainer.classList.add('complete');
+    }, animationEndTime * 1000);
 });
 
